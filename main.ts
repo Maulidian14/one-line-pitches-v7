@@ -11,6 +11,10 @@ import { fileURLToPath } from "node:url";
 const PITCH =
   "Stop saying 'someone should build this' — tell an AI agent on make.fun what your app should do, and it will build your first version today, free.";
 
+if (PITCH.length > 240) {
+  throw new Error("pitch exceeds 240 characters");
+}
+
 function outputTargets(): string[] {
   const here = dirname(fileURLToPath(import.meta.url));
   return ["/output/entry.txt", join(here, "entry.txt")];
